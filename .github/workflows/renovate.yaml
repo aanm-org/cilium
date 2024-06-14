@@ -1,5 +1,8 @@
 name: Renovate
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Running every hour every working day (Monday to Friday)
     - cron: '0 * * * 1-5'
