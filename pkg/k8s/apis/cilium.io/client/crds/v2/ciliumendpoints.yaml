@@ -5,6 +5,7 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   creationTimestamp: null
+  # Test to check if this file is regenerated
   name: ciliumendpoints.cilium.io
 spec:
   group: cilium.io
