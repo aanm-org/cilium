@@ -101,8 +101,7 @@
         "github.com/actions/", // GitHub official's GH actions
       ],
       "automerge": true,
-      "automergeType": "pr-comment",
-      "automergeComment": "/test"
+      "automergeType": "pr",
     },
     {
       // Try to group all updates for all dependencies in a single PR. More
