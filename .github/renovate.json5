@@ -6,7 +6,7 @@
     "helpers:pinGitHubActionDigests"
   ],
   // self-hosted configuration
-  "username": "private-renovate[bot]",
+  "username": "private-renovate-2[bot]",
   "repositories": ["aanm-org/cilium"],
   // renovate first reads this configuration, then reads the repository
   // configuration, since we don't split between the self-hosted and the
