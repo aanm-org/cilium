@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/cilium/cilium/cilium-cli/k8s"
-
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -26,6 +25,10 @@ type Parameters struct {
 	WaitDuration            time.Duration
 	Output                  string
 	Outputfile              string
+	MetricsDirectory        string
+	Repo                    string
+	Commit                  string
+	GHStepSummaryAnchor     bool
 }
 
 type Feature struct {
