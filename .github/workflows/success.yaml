@@ -1,0 +1,18 @@
+name: Always Succeed
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+jobs:
+  always_succeed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a successful command
+        run: echo "This will succeed"
