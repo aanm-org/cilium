@@ -5,6 +5,14 @@
 Summary of Changes
 ------------------
 
+**Misc Changes:**
+* Prepare for release v1.15.7 (aanm-org/cilium#21, @auto-committer-aanm-org[bot])
+
+## v1.15.7
+
+Summary of Changes
+------------------
+
 ## v1.15.6
 
 Summary of Changes
