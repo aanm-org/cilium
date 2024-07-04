@@ -6,8 +6,8 @@
     "helpers:pinGitHubActionDigests"
   ],
   // self-hosted configuration
-  "username": "cilium-renovate[bot]",
-  "repositories": ["cilium/cilium"],
+  "username": "private-renovate-2[bot]",
+  "repositories": ["aanm-org/cilium"],
   // renovate first reads this configuration, then reads the repository
   // configuration, since we don't split between the self-hosted and the
   // repository configuration, this can lead to duplicate of some areas of the
@@ -372,33 +372,32 @@
       "versioning": "regex:^((?<compatibility>[a-z0-9-.]+)|((?<major>\\d+)\\.(?<minor>\\d+)))\\-(?<patch>\\d+)\\.(?<build>\\d+)(@(?<currentDigest>sha256:[a-f0-9]+))?$"
     },
     {
-      // Only allow stable LVH images on stable branches
+      // LVH images: only allow stable versions on stable branches, separate major/minor/patch,
+      // group patch updates together, but disable major/minor updates (manual only)
       "matchPackageNames": [
         "cilium/little-vm-helper",
         "quay.io/lvh-images/complexity-test",
-        "quay.io/lvh-images/kind"
+        "quay.io/lvh-images/kind",
+        "kindest/node",
+        "quay.io/cilium/kindest-node"
       ],
+      // Only allow stable LVH images on stable branches
       "allowedVersions": "!/bpf-next-.*/",
       "matchBaseBranches": [
         "v1.17",
         "v1.16",
         "v1.15",
       ],
-    },
-    {
-      // Separate major minor and patch so that renovate can update the patch
-      // versions of the images.
-      "matchPackageNames": [
-        "quay.io/lvh-images/complexity-test",
-        "quay.io/lvh-images/kind",
-        "kindest/node",
-        "quay.io/cilium/kindest-node"
-      ],
+      // Separate major minor and patch for LVH images so that renovate can update the patch
+      // versions automatically while requiring manual intervention for major/minor updates
       "separateMajorMinor": true,
-      "separateMinorPatch": true
+      "separateMinorPatch": true,
+      // Group patch updates together but separate from other dependencies due to special handling
+      "groupName": "lvh-images-patch-updates",
+      "matchUpdateTypes": ["patch"]
     },
     {
-      // Do not allow any updates for major.minor, they will be done by maintainers
+      // Do not allow any updates for major.minor LVH images, they will be done by maintainers
       "enabled": false,
       "matchPackageNames": [
         "quay.io/lvh-images/complexity-test",
@@ -448,10 +447,14 @@
       ]
     },
     {
+      // Allow k8s patch updates to be grouped with other dependencies (remove separate grouping)
       matchDepPatterns: [
         // k8s dependencies will be updated manually along with tests
         "k8s.io/*",
         "sigs.k8s.io/*"
+      ],
+      "matchUpdateTypes": [
+        "patch"
       ],
       "postUpgradeTasks": {
         "commands": [
