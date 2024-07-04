@@ -6,8 +6,8 @@
     "helpers:pinGitHubActionDigests"
   ],
   // self-hosted configuration
-  "username": "cilium-renovate[bot]",
-  "repositories": ["cilium/cilium"],
+  "username": "private-renovate-2[bot]",
+  "repositories": ["aanm-org/cilium"],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   // renovate first reads this configuration, then reads the repository
