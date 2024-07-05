@@ -53,6 +53,7 @@
     // repository would receive a new commit.
     "google/oss-fuzz"
   ],
+  "rebaseWhen": "conflicted",
   "pinDigests": true,
   "ignorePresets": [":prHourlyLimit2"],
   // We don't want to separate major and minor upgrades in separate PRs since
