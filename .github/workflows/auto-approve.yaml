@@ -1,0 +1,26 @@
+name: Approve PR
+
+on:
+  pull_request:
+    types:
+    - opened
+    - reopened
+
+jobs:
+  approve:
+    environment: auto-approve
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: debug
+      run: echo ${{ github.event.pull_request.user.login }}
+
+    - name: Approve the PR
+      if: ${{ github.event.pull_request.user.login == 'private-renovate-2[bot]' }}
+      env:
+        PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+      run: |
+        echo $PERSONAL_ACCESS_TOKEN | gh auth login --with-token
+        gh -R ${GITHUB_REPOSITORY} pr review ${PULL_REQUEST_NUMBER} --approve
