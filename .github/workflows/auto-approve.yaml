@@ -8,20 +8,25 @@ on:
 jobs:
   approve:
     environment: auto-approve
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: debug
-      run: echo ${{ github.event.pull_request.user.login }}
+    - name: Debug
+      run: |
+        echo ${{ github.event.pull_request.user.login }}
+        echo ${{ github.triggering_actor }}
+        echo ${{ github.event.requested_reviewer.login }}
 
-    - name: debug actor login
-      run: echo ${{ github.triggering_actor }}
-
-    - name: Approve the PR if the PR review was requested by renovate bot and
-            if the PR was created by renovate.
-      if: ${{ 
+    - name: Approve PR
+      # Approve the PR if all of the following conditions are true:
+      # - the PR review was requested by renovate bot and
+      # - the PR was also created by renovate bot
+      # - the requested reviewer was the trusted 'ciliumbot'
+      if: ${{
            github.event.pull_request.user.login == 'private-renovate-2[bot]' &&
-           github.triggering_actor == 'private-renovate-2[bot]'
+           github.triggering_actor == 'private-renovate-2[bot]' &&
+           github.event.requested_reviewer.login == 'aanm'
           }}
       env:
         PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
