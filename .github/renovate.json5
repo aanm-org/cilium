@@ -134,7 +134,7 @@
       "automerge": true,
       "automergeType": "pr",
       "groupName": "auto-merge-trusted-deps",
-      "assignees":[
+      "additionalReviewers":[
         "aanm",
       ]
     },
