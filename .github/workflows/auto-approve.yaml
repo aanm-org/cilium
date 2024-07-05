@@ -21,7 +21,7 @@ jobs:
             if the PR was created by renovate.
       if: ${{ 
            github.event.pull_request.user.login == 'private-renovate-2[bot]' &&
-           github.event.triggering_actor == 'private-renovate-2[bot]'
+           github.triggering_actor == 'private-renovate-2[bot]'
           }}
       env:
         PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
