@@ -14,6 +14,7 @@
   // config, for example the regex. See:
   // https://docs.renovatebot.com/self-hosted-configuration/#requireconfig
   "requireConfig": "ignored",
+  assignAutomerge: true,
   // This ensures that the gitAuthor and gitSignOff fields match
   "gitAuthor": "cilium-renovate[bot] <134692979+cilium-renovate[bot]@users.noreply.github.com>",
   "includePaths": [
@@ -31,7 +32,7 @@
     "test/packet/scripts/install.sh",
     "install/kubernetes/cilium/templates/spire/**",
     "install/kubernetes/cilium/values.yaml.tmpl",
-    "install/kubernetes/Makefile.values",
+    "install/kubernetes/Makefile.values"
   ],
   "schedule": [
     "on sunday"
@@ -102,7 +103,7 @@
         "kindest/node", // official kindest images
         "kubernetes-sigs/kind", // official kind dependencies
         "renovatebot/github-action", // Renovate's GH action
-        "renovatebot/renovate", // Renovate's bot name
+        "renovatebot/renovate" // Renovate's bot name
       ],
       "matchPackagePrefixes": [
         "actions/", // GitHub official's GH actions
@@ -128,11 +129,14 @@
         "k8s.io/", // Kubernetes official repo
         "quay.io/cilium/", // LVH images
         "quay.io/lvh-images/", // LVH images
-        "sigs.k8s.io/", // Kubernetes official SIG repo
+        "sigs.k8s.io/" // Kubernetes official SIG repo
       ],
       "automerge": true,
       "automergeType": "pr",
-      "groupName": "auto-merge-trusted-deps"
+      "groupName": "auto-merge-trusted-deps",
+      "assignees":[
+        "aanm",
+      ]
     },
     {
       // Try to group all updates for all dependencies in a single PR. More
@@ -147,7 +151,7 @@
         "lockFileMaintenance",
         "rollback",
         "bump",
-        "replacement",
+        "replacement"
       ],
       "groupName": "all-dependencies"
     },
@@ -156,7 +160,7 @@
       "groupSlug": "all-github-action",
       "matchPaths": [
         ".github/**"
-      ],
+      ]
     },
     {
       "groupName": "all go dependencies main",
@@ -177,7 +181,7 @@
       // Avoid updating patch releases of golang in go.mod
       "enabled": "false",
       "matchFiles": [
-        "go.mod",
+        "go.mod"
       ],
       "matchDepNames": [
         "go"
@@ -257,7 +261,7 @@
       ],
       "matchPackageNames": [
         "docker.io/library/golang"
-      ],
+      ]
     },
     {
       // Do not allow any major and minor updates into stable branches.
@@ -269,7 +273,7 @@
       ],
       "matchUpdateTypes": [
         "major",
-        "minor",
+        "minor"
       ],
       matchBaseBranches: [
         "v1.16",
@@ -291,7 +295,7 @@
       ],
       // We need to manually fix some regressions caused by spire, thus we won't
       // be upgrading to 1.10 until we fix it.
-      "allowedVersions": "<1.10",
+      "allowedVersions": "<1.10"
     },
     {
       "matchFiles": [
@@ -304,7 +308,7 @@
       "matchBaseBranches": [
         "v1.14"
       ],
-      "allowedVersions": "<1.7",
+      "allowedVersions": "<1.7"
     },
     {
       "matchPackageNames": [
@@ -317,7 +321,7 @@
         "v1.15",
         "v1.14",
         "v1.13"
-      ],
+      ]
     },
     {
       "matchPackageNames": [
@@ -380,7 +384,7 @@
     },
     {
       "matchPackageNames": [
-        "quay.io/cilium/certgen",
+        "quay.io/cilium/certgen"
       ],
       "allowedVersions": "<0.2.0",
       "matchBaseBranches": [
@@ -396,7 +400,7 @@
       "matchDepNames": [
         "golang.zx2c4.com/wireguard"
       ],
-      "versioning": "regex:^v?0\\.0\\.0-(?<patch>\\d+)-.*$",
+      "versioning": "regex:^v?0\\.0\\.0-(?<patch>\\d+)-.*$"
     },
     // Ref: https://github.com/cilium/cilium-cli#releases
     {
@@ -442,7 +446,7 @@
       "matchDepNames": [
         "go",
         "docker.io/library/golang"
-      ],
+      ]
     },
     {
       // Group golangci-lint updates to overrule grouping of version updates in the GHA files.
@@ -486,7 +490,7 @@
         "v1.15",
         "v1.14",
         "v1.13"
-      ],
+      ]
     },
     {
       "groupName": "all lvh-images main",
@@ -498,7 +502,7 @@
       ],
       "matchBaseBranches": [
         "main"
-      ],
+      ]
     },
     {
       // Separate major minor and patch so that renovate can update the patch
@@ -580,13 +584,13 @@
       "matchDepNames": [
         "quay.io/cilium/cilium-envoy"
       ],
-      "versioning": "regex:v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-.*$",
+      "versioning": "regex:v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-.*$"
     },
     {
       "matchDepNames": [
         "grpc/grpc-go"
       ],
-      "versioning": "regex:cmd/protoc-gen-go-grpc/v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
+      "versioning": "regex:cmd/protoc-gen-go-grpc/v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
     }
   ],
   "kubernetes": {
