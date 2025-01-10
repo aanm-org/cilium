@@ -84,5 +84,5 @@ jobs:
       - name: Set final commit status
         uses: myrotvorets/set-commit-status-action@3730c0a348a2ace3c110851bed53331bc6406e9f # v2.0.1
         with:
-          sha: ${{ inputs.SHA || github.sha }}
+          sha: 2f6d1d2de62ef1ee6873bb257bf046cff28ae4ae
           status: ${{ needs.summary_report.result }}
