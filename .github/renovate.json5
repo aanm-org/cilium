@@ -157,28 +157,6 @@
       "groupName": "all-dependencies"
     },
     {
-      "groupName": "all github action dependencies",
-      "groupSlug": "all-github-action",
-      "matchPaths": [
-        ".github/**"
-      ],
-    },
-    {
-      "groupName": "all go dependencies main",
-      "groupSlug": "all-go-deps-main",
-      "matchFiles": [
-        "go.mod",
-        "go.sum"
-      ],
-      "postUpdateOptions": [
-        // update source import paths on major updates
-        "gomodUpdateImportPaths"
-      ],
-      matchBaseBranches: [
-        "main"
-      ]
-    },
-    {
       // Disabling updating quay.io/lvh-images/kind until issue https://github.com/cilium/cilium/issues/38058 is fixed.
       "matchDepNames": [
         "quay.io/lvh-images/kind",
@@ -190,7 +168,7 @@
     },
     {
       // Avoid updating patch releases of golang in go.mod
-      "enabled": "false",
+      "enabled": false,
       "matchFiles": [
         "go.mod",
       ],
@@ -213,8 +191,6 @@
     {
       // Do not allow any updates into stable branches.
       "enabled": false,
-      "groupName": "all go dependencies stable",
-      "groupSlug": "all-go-deps-stable",
       "matchFiles": [
         "go.mod",
         "go.sum"
@@ -257,22 +233,8 @@
       ]
     },
     {
-      // Grouped these together because they require a re-creation of the base
-      // image.
-      "groupName": "base-images",
-      "matchFiles": [
-        "images/builder/Dockerfile",
-        "images/runtime/Dockerfile"
-      ],
-      "matchPackageNames": [
-        "docker.io/library/golang"
-      ],
-    },
-    {
       // Do not allow any major and minor updates into stable branches.
       "enabled": false,
-      "groupName": "all external docker images dependencies",
-      "groupSlug": "all-external-images-deps-stable",
       "matchFiles": [
         "install/kubernetes/Makefile.values"
       ],
@@ -402,55 +364,6 @@
       ],
       "versioning": "regex:^v?0\\.0\\.0-(?<patch>\\d+)-.*$",
     },
-    // Ref: https://github.com/cilium/cilium-cli#releases
-    {
-      "groupName": "Cilium CLI",
-      "groupSlug": "cilium-cli",
-      "matchDepNames": [
-        "cilium/cilium-cli"
-      ],
-      "matchBaseBranches": [
-        "main",
-        "v1.17",
-        "v1.16",
-        "v1.15",
-      ]
-    },
-    {
-      "groupName": "Hubble CLI",
-      "groupSlug": "hubble-cli",
-      "matchDepNames": [
-        "cilium/hubble",
-        "quay.io/cilium/hubble"
-      ]
-    },
-    {
-      "groupName": "Go",
-      "matchDepNames": [
-        "go",
-        "docker.io/library/golang"
-      ],
-    },
-    {
-      // Group golangci-lint updates to overrule grouping of version updates in the GHA files.
-      // Without this, golangci-lint updates are not in sync for GHA files and other usages.
-      "groupName": "golangci-lint",
-      "matchDepNames": [
-        "golangci/golangci-lint"
-      ]
-    },
-    {
-      // Do not allow any updates into stable branches.
-      "enabled": false,
-      "matchDepNames": [
-        "golangci/golangci-lint"
-      ],
-      "matchBaseBranches": [
-        "v1.17",
-        "v1.16",
-        "v1.15",
-      ]
-    },
     {
       "matchDepNames": [
         "quay.io/lvh-images/complexity-test",
@@ -459,8 +372,7 @@
       "versioning": "regex:^((?<compatibility>[a-z0-9-.]+)|((?<major>\\d+)\\.(?<minor>\\d+)))\\-(?<patch>\\d+)\\.(?<build>\\d+)(@(?<currentDigest>sha256:[a-f0-9]+))?$"
     },
     {
-      "groupName": "stable lvh-images",
-      "groupSlug": "stable-lvh-images",
+      // Only allow stable LVH images on stable branches
       "matchPackageNames": [
         "cilium/little-vm-helper",
         "quay.io/lvh-images/complexity-test",
@@ -471,30 +383,6 @@
         "v1.17",
         "v1.16",
         "v1.15",
-      ],
-    },
-    {
-      "groupName": "all lvh-images main",
-      "groupSlug": "all-lvh-images-main",
-      "matchPackageNames": [
-        "cilium/little-vm-helper",
-        "quay.io/lvh-images/complexity-test",
-        "quay.io/lvh-images/kind"
-      ],
-      "matchBaseBranches": [
-        "main"
-      ],
-    },
-    // group updating renovate versions together (config validator/self hosted renovate)
-    {
-      "groupName": "renovate dependencies",
-      "groupSlug": "renovate-dependencies",
-      "matchDepNames": [
-        "renovatebot/renovate",
-        "ghcr.io/renovatebot/renovate",
-      ],
-      "matchBaseBranches": [
-        "main"
       ],
     },
     {
