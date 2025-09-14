@@ -9,54 +9,65 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NodeAddressingElement Addressing information
 //
 // swagger:model NodeAddressingElement
-type NodeAddressingElement struct {
+      type NodeAddressingElement struct {
+  
+  
+    // Node address type, one of HostName, ExternalIP or InternalIP
+AddressType string `json:"address-type,omitempty"`
 
-	// Node address type, one of HostName, ExternalIP or InternalIP
-	AddressType string `json:"address-type,omitempty"`
+  
+    // Address pool to be used for local endpoints
+AllocRange string `json:"alloc-range,omitempty"`
 
-	// Address pool to be used for local endpoints
-	AllocRange string `json:"alloc-range,omitempty"`
+  
+    // True if address family is enabled
+Enabled bool `json:"enabled,omitempty"`
 
-	// True if address family is enabled
-	Enabled bool `json:"enabled,omitempty"`
+  
+    // IP address of node
+IP string `json:"ip,omitempty"`
 
-	// IP address of node
-	IP string `json:"ip,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this node addressing element
 func (m *NodeAddressingElement) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this node addressing element based on context it is used
+// ContextValidate validates this node addressing element based on context it is used 
 func (m *NodeAddressingElement) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *NodeAddressingElement) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NodeAddressingElement) UnmarshalBinary(b []byte) error {
-	var res NodeAddressingElement
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res NodeAddressingElement
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SelectorEntry Mapping of FQDNSelector to corresponding regular expression
 //
 // swagger:model SelectorEntry
-type SelectorEntry struct {
+      type SelectorEntry struct {
+  
+  
+    // String representation of regular expression form of FQDNSelector
+RegexString string `json:"regexString,omitempty"`
 
-	// String representation of regular expression form of FQDNSelector
-	RegexString string `json:"regexString,omitempty"`
+  
+    // FQDNSelector in string representation
+SelectorString string `json:"selectorString,omitempty"`
 
-	// FQDNSelector in string representation
-	SelectorString string `json:"selectorString,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this selector entry
 func (m *SelectorEntry) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this selector entry based on context it is used
+// ContextValidate validates this selector entry based on context it is used 
 func (m *SelectorEntry) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *SelectorEntry) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SelectorEntry) UnmarshalBinary(b []byte) error {
-	var res SelectorEntry
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res SelectorEntry
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

@@ -9,51 +9,61 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IPV6BigTCP Status of IPv6 BIG TCP
 //
 // swagger:model IPV6BigTCP
-type IPV6BigTCP struct {
+      type IPV6BigTCP struct {
+  
+  
+    // Is IPv6 BIG TCP enabled
+Enabled bool `json:"enabled,omitempty"`
 
-	// Is IPv6 BIG TCP enabled
-	Enabled bool `json:"enabled,omitempty"`
+  
+    // Maximum IPv6 GRO size
+MaxGRO int64 `json:"maxGRO,omitempty"`
 
-	// Maximum IPv6 GRO size
-	MaxGRO int64 `json:"maxGRO,omitempty"`
+  
+    // Maximum IPv6 GSO size
+MaxGSO int64 `json:"maxGSO,omitempty"`
 
-	// Maximum IPv6 GSO size
-	MaxGSO int64 `json:"maxGSO,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this IP v6 big TCP
 func (m *IPV6BigTCP) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this IP v6 big TCP based on context it is used
+// ContextValidate validates this IP v6 big TCP based on context it is used 
 func (m *IPV6BigTCP) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *IPV6BigTCP) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IPV6BigTCP) UnmarshalBinary(b []byte) error {
-	var res IPV6BigTCP
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IPV6BigTCP
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

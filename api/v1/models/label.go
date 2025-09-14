@@ -9,51 +9,61 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Label Label is the Cilium's representation of a container label
 //
 // swagger:model Label
-type Label struct {
+      type Label struct {
+  
+  
+    // key
+Key string `json:"key,omitempty"`
 
-	// key
-	Key string `json:"key,omitempty"`
+  
+    // Source can be one of the above values (e.g. LabelSourceContainer)
+Source string `json:"source,omitempty"`
 
-	// Source can be one of the above values (e.g. LabelSourceContainer)
-	Source string `json:"source,omitempty"`
+  
+    // value
+Value string `json:"value,omitempty"`
 
-	// value
-	Value string `json:"value,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this label
 func (m *Label) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this label based on context it is used
+// ContextValidate validates this label based on context it is used 
 func (m *Label) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *Label) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Label) UnmarshalBinary(b []byte) error {
-	var res Label
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res Label
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

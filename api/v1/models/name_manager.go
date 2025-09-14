@@ -9,119 +9,197 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"strconv"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NameManager Internal state about DNS names in relation to policy subsystem
 //
 // swagger:model NameManager
-type NameManager struct {
+      type NameManager struct {
+  
+  
+    // Names to poll for DNS Poller
+DNSPollNames []string `json:"DNSPollNames"`
 
-	// Names to poll for DNS Poller
-	DNSPollNames []string `json:"DNSPollNames"`
+  
+    // Mapping of FQDNSelectors to corresponding regular expressions
+FQDNPolicySelectors []*SelectorEntry `json:"FQDNPolicySelectors"`
 
-	// Mapping of FQDNSelectors to corresponding regular expressions
-	FQDNPolicySelectors []*SelectorEntry `json:"FQDNPolicySelectors"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this name manager
 func (m *NameManager) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateFQDNPolicySelectors(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+  
+    
+      if err := m.validateFQDNPolicySelectors(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  
+  
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+  
+    
+      
+      
+      
+      
+
+      
 func (m *NameManager) validateFQDNPolicySelectors(formats strfmt.Registry) error {
-	if swag.IsZero(m.FQDNPolicySelectors) { // not required
-		return nil
-	}
+  if swag.IsZero(m.FQDNPolicySelectors) { // not required
+    return nil
+  }
+        
+    
+  
+  
+  
+  
+  
+  
+  
+      for i := 0; i < len(m.FQDNPolicySelectors); i++ {
+          if swag.IsZero(m.FQDNPolicySelectors[i]) { // not required
+            continue
+          }
+        
+    
+      if m.FQDNPolicySelectors[i] != nil {
+      if err := m.FQDNPolicySelectors[i].Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("FQDNPolicySelectors"+ "." + strconv.Itoa(i))
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("FQDNPolicySelectors"+ "." + strconv.Itoa(i))
+        }
+        return err
+      }
+    }
 
-	for i := 0; i < len(m.FQDNPolicySelectors); i++ {
-		if swag.IsZero(m.FQDNPolicySelectors[i]) { // not required
-			continue
-		}
 
-		if m.FQDNPolicySelectors[i] != nil {
-			if err := m.FQDNPolicySelectors[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("FQDNPolicySelectors" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("FQDNPolicySelectors" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
+      }
 
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this name manager based on the context it is used
 func (m *NameManager) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateFQDNPolicySelectors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+    
+  
+     
+      if err := m.contextValidateFQDNPolicySelectors(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
+  
+    
 func (m *NameManager) contextValidateFQDNPolicySelectors(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+  
+      for i := 0; i < len(m.FQDNPolicySelectors); i++ {
+        
+    
+  
+      if m.FQDNPolicySelectors[i] != nil {
+      
+      if swag.IsZero(m.FQDNPolicySelectors[i]) { // not required
+        return nil
+      }
+      
+      if err := m.FQDNPolicySelectors[i].ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("FQDNPolicySelectors"+ "." + strconv.Itoa(i))
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("FQDNPolicySelectors"+ "." + strconv.Itoa(i))
+        }
+        return err
+      }
+    }
 
-	for i := 0; i < len(m.FQDNPolicySelectors); i++ {
 
-		if m.FQDNPolicySelectors[i] != nil {
 
-			if swag.IsZero(m.FQDNPolicySelectors[i]) { // not required
-				return nil
-			}
+      }
 
-			if err := m.FQDNPolicySelectors[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("FQDNPolicySelectors" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("FQDNPolicySelectors" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
 
-	}
 
-	return nil
+  return nil
 }
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *NameManager) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NameManager) UnmarshalBinary(b []byte) error {
-	var res NameManager
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res NameManager
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

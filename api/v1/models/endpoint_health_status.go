@@ -9,85 +9,118 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
-// EndpointHealthStatus A common set of statuses for endpoint health * “OK“ = All components operational * “Bootstrap“ = This component is being created * “Pending“ = A change is being processed to be applied * “Warning“ = This component is not applying up-to-date policies (but is still applying the previous version) * “Failure“ = An error has occurred and no policy is being applied * “Disabled“ = This endpoint is disabled and will not handle traffic
+// EndpointHealthStatus A common set of statuses for endpoint health * ``OK`` = All components operational * ``Bootstrap`` = This component is being created * ``Pending`` = A change is being processed to be applied * ``Warning`` = This component is not applying up-to-date policies (but is still applying the previous version) * ``Failure`` = An error has occurred and no policy is being applied * ``Disabled`` = This endpoint is disabled and will not handle traffic
+// 
 //
 // swagger:model EndpointHealthStatus
-type EndpointHealthStatus string
+    type EndpointHealthStatus string
+  
 
 func NewEndpointHealthStatus(value EndpointHealthStatus) *EndpointHealthStatus {
-	return &value
+  return &value
 }
 
 // Pointer returns a pointer to a freshly-allocated EndpointHealthStatus.
 func (m EndpointHealthStatus) Pointer() *EndpointHealthStatus {
-	return &m
+  return &m
 }
-
+    
+  
+    
+      
 const (
-
-	// EndpointHealthStatusOK captures enum value "OK"
+      
+  // EndpointHealthStatusOK captures enum value "OK"
 	EndpointHealthStatusOK EndpointHealthStatus = "OK"
-
-	// EndpointHealthStatusBootstrap captures enum value "Bootstrap"
+      
+  // EndpointHealthStatusBootstrap captures enum value "Bootstrap"
 	EndpointHealthStatusBootstrap EndpointHealthStatus = "Bootstrap"
-
-	// EndpointHealthStatusPending captures enum value "Pending"
+      
+  // EndpointHealthStatusPending captures enum value "Pending"
 	EndpointHealthStatusPending EndpointHealthStatus = "Pending"
-
-	// EndpointHealthStatusWarning captures enum value "Warning"
+      
+  // EndpointHealthStatusWarning captures enum value "Warning"
 	EndpointHealthStatusWarning EndpointHealthStatus = "Warning"
-
-	// EndpointHealthStatusFailure captures enum value "Failure"
+      
+  // EndpointHealthStatusFailure captures enum value "Failure"
 	EndpointHealthStatusFailure EndpointHealthStatus = "Failure"
-
-	// EndpointHealthStatusDisabled captures enum value "Disabled"
+      
+  // EndpointHealthStatusDisabled captures enum value "Disabled"
 	EndpointHealthStatusDisabled EndpointHealthStatus = "Disabled"
+      
 )
+    
 
 // for schema
 var endpointHealthStatusEnum []interface{}
-
 func init() {
-	var res []EndpointHealthStatus
-	if err := json.Unmarshal([]byte(`["OK","Bootstrap","Pending","Warning","Failure","Disabled"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		endpointHealthStatusEnum = append(endpointHealthStatusEnum, v)
-	}
+  var res []EndpointHealthStatus
+  if err := json.Unmarshal([]byte(`["OK","Bootstrap","Pending","Warning","Failure","Disabled"]`), &res); err != nil {
+    panic(err)
+  }
+  for _, v := range res {
+    endpointHealthStatusEnum = append(endpointHealthStatusEnum, v)
+  }
 }
 
 func (m EndpointHealthStatus) validateEndpointHealthStatusEnum(path, location string, value EndpointHealthStatus) error {
-	if err := validate.EnumCase(path, location, value, endpointHealthStatusEnum, true); err != nil {
-		return err
-	}
-	return nil
+  if err := validate.EnumCase(path, location, value, endpointHealthStatusEnum, true); err != nil {
+    return err
+  }
+  return nil
 }
-
+  
+  
+  
 // Validate validates this endpoint health status
 func (m EndpointHealthStatus) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  // value enum
+  if err := m.validateEndpointHealthStatusEnum("", "body", m); err != nil {
+    return err
+  }
+  
 
-	// value enum
-	if err := m.validateEndpointHealthStatusEnum("", "body", m); err != nil {
-		return err
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+  
+  
+
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
-// ContextValidate validates this endpoint health status based on context it is used
+  
+  
+
+  
+
+// ContextValidate validates this endpoint health status based on context it is used 
 func (m EndpointHealthStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
+
+
+

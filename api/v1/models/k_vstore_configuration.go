@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // KVstoreConfiguration Configuration used for the kvstore
 //
 // swagger:model KVstoreConfiguration
-type KVstoreConfiguration struct {
+      type KVstoreConfiguration struct {
+  
+  
+    // Configuration options
+Options map[string]string `json:"options,omitempty"`
 
-	// Configuration options
-	Options map[string]string `json:"options,omitempty"`
+  
+    // Type of kvstore
+Type string `json:"type,omitempty"`
 
-	// Type of kvstore
-	Type string `json:"type,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this k vstore configuration
 func (m *KVstoreConfiguration) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this k vstore configuration based on context it is used
+// ContextValidate validates this k vstore configuration based on context it is used 
 func (m *KVstoreConfiguration) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *KVstoreConfiguration) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *KVstoreConfiguration) UnmarshalBinary(b []byte) error {
-	var res KVstoreConfiguration
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res KVstoreConfiguration
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

@@ -9,52 +9,62 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IPListEntryMetadata Additional metadata assigned to an IP list entry
 //
 // swagger:model IPListEntryMetadata
-type IPListEntryMetadata struct {
+      type IPListEntryMetadata struct {
+  
+  
+    // Name assigned to the IP (e.g. Kubernetes pod name)
+Name string `json:"name,omitempty"`
 
-	// Name assigned to the IP (e.g. Kubernetes pod name)
-	Name string `json:"name,omitempty"`
+  
+    // Namespace of the IP (e.g. Kubernetes namespace)
+Namespace string `json:"namespace,omitempty"`
 
-	// Namespace of the IP (e.g. Kubernetes namespace)
-	Namespace string `json:"namespace,omitempty"`
+  
+    // Source of the IP entry and its metadata
+// Example: k8s
+Source string `json:"source,omitempty"`
 
-	// Source of the IP entry and its metadata
-	// Example: k8s
-	Source string `json:"source,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this IP list entry metadata
 func (m *IPListEntryMetadata) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this IP list entry metadata based on context it is used
+// ContextValidate validates this IP list entry metadata based on context it is used 
 func (m *IPListEntryMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *IPListEntryMetadata) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IPListEntryMetadata) UnmarshalBinary(b []byte) error {
-	var res IPListEntryMetadata
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IPListEntryMetadata
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

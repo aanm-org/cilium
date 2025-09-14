@@ -9,62 +9,75 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // RemoteClusterConfig Cluster configuration exposed by the remote cluster
-//
+// 
 // +k8s:deepcopy-gen=true
 //
 // swagger:model RemoteClusterConfig
-type RemoteClusterConfig struct {
+      type RemoteClusterConfig struct {
+  
+  
+    // The Cluster ID advertised by the remote cluster
+ClusterID int64 `json:"cluster-id,omitempty"`
 
-	// The Cluster ID advertised by the remote cluster
-	ClusterID int64 `json:"cluster-id,omitempty"`
+  
+    // Whether the remote cluster information is locally cached by kvstoremesh
+Kvstoremesh bool `json:"kvstoremesh,omitempty"`
 
-	// Whether the remote cluster information is locally cached by kvstoremesh
-	Kvstoremesh bool `json:"kvstoremesh,omitempty"`
+  
+    // Whether the configuration is required to be present
+Required bool `json:"required,omitempty"`
 
-	// Whether the configuration is required to be present
-	Required bool `json:"required,omitempty"`
+  
+    // Whether the configuration has been correctly retrieved
+Retrieved bool `json:"retrieved,omitempty"`
 
-	// Whether the configuration has been correctly retrieved
-	Retrieved bool `json:"retrieved,omitempty"`
+  
+    // Whether or not MCS-API ServiceExports is enabled by the cluster (null means unsupported).
+ServiceExportsEnabled *bool `json:"service-exports-enabled,omitempty"`
 
-	// Whether or not MCS-API ServiceExports is enabled by the cluster (null means unsupported).
-	ServiceExportsEnabled *bool `json:"service-exports-enabled,omitempty"`
+  
+    // Whether the remote cluster supports per-prefix "synced" canaries
+SyncCanaries bool `json:"sync-canaries,omitempty"`
 
-	// Whether the remote cluster supports per-prefix "synced" canaries
-	SyncCanaries bool `json:"sync-canaries,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this remote cluster config
 func (m *RemoteClusterConfig) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this remote cluster config based on context it is used
+// ContextValidate validates this remote cluster config based on context it is used 
 func (m *RemoteClusterConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *RemoteClusterConfig) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RemoteClusterConfig) UnmarshalBinary(b []byte) error {
-	var res RemoteClusterConfig
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res RemoteClusterConfig
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

@@ -9,152 +9,232 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EndpointConfigurationSpec An endpoint's configuration
 //
 // swagger:model EndpointConfigurationSpec
-type EndpointConfigurationSpec struct {
+      type EndpointConfigurationSpec struct {
+  
+  
+    // the endpoint's labels
+LabelConfiguration *LabelConfigurationSpec `json:"label-configuration,omitempty"`
 
-	// the endpoint's labels
-	LabelConfiguration *LabelConfigurationSpec `json:"label-configuration,omitempty"`
+  
+    // Changeable configuration
+Options ConfigurationMap `json:"options,omitempty"`
 
-	// Changeable configuration
-	Options ConfigurationMap `json:"options,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this endpoint configuration spec
 func (m *EndpointConfigurationSpec) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateLabelConfiguration(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+      if err := m.validateLabelConfiguration(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+      if err := m.validateOptions(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  
+  
 
-	if err := m.validateOptions(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+      
+      
+      
+      
+
+      
 func (m *EndpointConfigurationSpec) validateLabelConfiguration(formats strfmt.Registry) error {
-	if swag.IsZero(m.LabelConfiguration) { // not required
-		return nil
-	}
+  if swag.IsZero(m.LabelConfiguration) { // not required
+    return nil
+  }
+        
+    
+      if m.LabelConfiguration != nil {
+      if err := m.LabelConfiguration.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("label-configuration")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("label-configuration")
+        }
+        return err
+      }
+    }
 
-	if m.LabelConfiguration != nil {
-		if err := m.LabelConfiguration.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("label-configuration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("label-configuration")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+    
+      
+      
+      
+      
 
+      
 func (m *EndpointConfigurationSpec) validateOptions(formats strfmt.Registry) error {
-	if swag.IsZero(m.Options) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Options) { // not required
+    return nil
+  }
+        
+    
+      if m.Options != nil {
+      if err := m.Options.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("options")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("options")
+        }
+        return err
+      }
+    }
 
-	if m.Options != nil {
-		if err := m.Options.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("options")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("options")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this endpoint configuration spec based on the context it is used
 func (m *EndpointConfigurationSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateLabelConfiguration(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if err := m.contextValidateOptions(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+     
+      if err := m.contextValidateLabelConfiguration(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+     
+      if err := m.contextValidateOptions(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
 func (m *EndpointConfigurationSpec) contextValidateLabelConfiguration(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      if m.LabelConfiguration != nil {
+      
+      if swag.IsZero(m.LabelConfiguration) { // not required
+        return nil
+      }
+      
+      if err := m.LabelConfiguration.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("label-configuration")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("label-configuration")
+        }
+        return err
+      }
+    }
 
-	if m.LabelConfiguration != nil {
 
-		if swag.IsZero(m.LabelConfiguration) { // not required
-			return nil
-		}
 
-		if err := m.LabelConfiguration.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("label-configuration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("label-configuration")
-			}
-			return err
-		}
-	}
-
-	return nil
+  return nil
 }
-
+    
+  
+    
 func (m *EndpointConfigurationSpec) contextValidateOptions(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      
+      if swag.IsZero(m.Options) { // not required
+        return nil
+      }
+      
+      if err := m.Options.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("options")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("options")
+        }
+        return err
+      }
 
-	if swag.IsZero(m.Options) { // not required
-		return nil
-	}
 
-	if err := m.Options.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("options")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("options")
-		}
-		return err
-	}
 
-	return nil
+  return nil
 }
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *EndpointConfigurationSpec) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *EndpointConfigurationSpec) UnmarshalBinary(b []byte) error {
-	var res EndpointConfigurationSpec
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res EndpointConfigurationSpec
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

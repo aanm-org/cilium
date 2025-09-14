@@ -9,104 +9,195 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SelectorIdentityMapping mapping of selector to identities which match it
 //
 // swagger:model SelectorIdentityMapping
-type SelectorIdentityMapping struct {
+      type SelectorIdentityMapping struct {
+  
+  
+    // identities mapping to this selector
+Identities []int64 `json:"identities"`
 
-	// identities mapping to this selector
-	Identities []int64 `json:"identities"`
+  
+    // Labels are the metadata labels associated with the selector
+Labels LabelArray `json:"labels,omitempty"`
 
-	// Labels are the metadata labels associated with the selector
-	Labels LabelArray `json:"labels,omitempty"`
+  
+    // string form of selector
+Selector string `json:"selector,omitempty"`
 
-	// string form of selector
-	Selector string `json:"selector,omitempty"`
+  
+    // number of users of this selector in the cache
+Users int64 `json:"users,omitempty"`
 
-	// number of users of this selector in the cache
-	Users int64 `json:"users,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this selector identity mapping
 func (m *SelectorIdentityMapping) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateLabels(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+  
+    
+      if err := m.validateLabels(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+  
+    
+  
+  
+  
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+  
+    
+      
+      
+      
+      
+
+      
 func (m *SelectorIdentityMapping) validateLabels(formats strfmt.Registry) error {
-	if swag.IsZero(m.Labels) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Labels) { // not required
+    return nil
+  }
+        
+    
+  
+  
+  
+  
+  
+  
+  
+      if err := m.Labels.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("labels")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("labels")
+        }
+        return err
+      }
 
-	if err := m.Labels.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("labels")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("labels")
-		}
-		return err
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+    
+  
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this selector identity mapping based on the context it is used
 func (m *SelectorIdentityMapping) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+    
+  
+     
+      if err := m.contextValidateLabels(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+  
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
+  
+    
 func (m *SelectorIdentityMapping) contextValidateLabels(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+  
+      if err := m.Labels.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("labels")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("labels")
+        }
+        return err
+      }
 
-	if err := m.Labels.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("labels")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("labels")
-		}
-		return err
-	}
 
-	return nil
+
+  return nil
 }
+    
+  
+    
+  
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *SelectorIdentityMapping) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SelectorIdentityMapping) UnmarshalBinary(b []byte) error {
-	var res SelectorIdentityMapping
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res SelectorIdentityMapping
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BPFMapProperties BPF map properties
 //
 // swagger:model BPFMapProperties
-type BPFMapProperties struct {
+      type BPFMapProperties struct {
+  
+  
+    // Name of the BPF map
+Name string `json:"name,omitempty"`
 
-	// Name of the BPF map
-	Name string `json:"name,omitempty"`
+  
+    // Size of the BPF map
+Size int64 `json:"size,omitempty"`
 
-	// Size of the BPF map
-	Size int64 `json:"size,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this b p f map properties
 func (m *BPFMapProperties) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this b p f map properties based on context it is used
+// ContextValidate validates this b p f map properties based on context it is used 
 func (m *BPFMapProperties) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *BPFMapProperties) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *BPFMapProperties) UnmarshalBinary(b []byte) error {
-	var res BPFMapProperties
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res BPFMapProperties
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

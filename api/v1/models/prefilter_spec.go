@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrefilterSpec CIDR ranges implemented in the Prefilter
 //
 // swagger:model PrefilterSpec
-type PrefilterSpec struct {
+      type PrefilterSpec struct {
+  
+  
+    // deny
+Deny []string `json:"deny"`
 
-	// deny
-	Deny []string `json:"deny"`
+  
+    // revision
+Revision int64 `json:"revision,omitempty"`
 
-	// revision
-	Revision int64 `json:"revision,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this prefilter spec
 func (m *PrefilterSpec) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this prefilter spec based on context it is used
+// ContextValidate validates this prefilter spec based on context it is used 
 func (m *PrefilterSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *PrefilterSpec) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PrefilterSpec) UnmarshalBinary(b []byte) error {
-	var res PrefilterSpec
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res PrefilterSpec
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

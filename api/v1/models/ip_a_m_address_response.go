@@ -9,63 +9,76 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IPAMAddressResponse IPAM configuration of an individual address family
 //
 // swagger:model IPAMAddressResponse
-type IPAMAddressResponse struct {
+      type IPAMAddressResponse struct {
+  
+  
+    // List of CIDRs out of which IPs are allocated
+Cidrs []string `json:"cidrs"`
 
-	// List of CIDRs out of which IPs are allocated
-	Cidrs []string `json:"cidrs"`
+  
+    // The UUID for the expiration timer. Set when expiration has been
+// enabled while allocating.
+// 
+ExpirationUUID string `json:"expiration-uuid,omitempty"`
 
-	// The UUID for the expiration timer. Set when expiration has been
-	// enabled while allocating.
-	//
-	ExpirationUUID string `json:"expiration-uuid,omitempty"`
+  
+    // IP of gateway
+Gateway string `json:"gateway,omitempty"`
 
-	// IP of gateway
-	Gateway string `json:"gateway,omitempty"`
+  
+    // InterfaceNumber is a field for generically identifying an interface. This is only useful in ENI mode.
+// 
+InterfaceNumber string `json:"interface-number,omitempty"`
 
-	// InterfaceNumber is a field for generically identifying an interface. This is only useful in ENI mode.
-	//
-	InterfaceNumber string `json:"interface-number,omitempty"`
+  
+    // Allocated IP for endpoint
+IP string `json:"ip,omitempty"`
 
-	// Allocated IP for endpoint
-	IP string `json:"ip,omitempty"`
+  
+    // MAC of master interface if address is a slave/secondary of a master interface
+MasterMac string `json:"master-mac,omitempty"`
 
-	// MAC of master interface if address is a slave/secondary of a master interface
-	MasterMac string `json:"master-mac,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this IP a m address response
 func (m *IPAMAddressResponse) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this IP a m address response based on context it is used
+// ContextValidate validates this IP a m address response based on context it is used 
 func (m *IPAMAddressResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *IPAMAddressResponse) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IPAMAddressResponse) UnmarshalBinary(b []byte) error {
-	var res IPAMAddressResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IPAMAddressResponse
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

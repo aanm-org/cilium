@@ -9,62 +9,74 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // RemoteClusterSynced Status of the synchronization with the remote cluster, about each resource
 // type. A given resource is considered to be synchronized if the initial
 // list of entries has been completely received from the remote cluster, and
 // new events are currently being watched.
-//
+// 
 // +k8s:deepcopy-gen=true
 //
 // swagger:model RemoteClusterSynced
-type RemoteClusterSynced struct {
+      type RemoteClusterSynced struct {
+  
+  
+    // Endpoints synchronization status
+Endpoints bool `json:"endpoints,omitempty"`
 
-	// Endpoints synchronization status
-	Endpoints bool `json:"endpoints,omitempty"`
+  
+    // Identities synchronization status
+Identities bool `json:"identities,omitempty"`
 
-	// Identities synchronization status
-	Identities bool `json:"identities,omitempty"`
+  
+    // Nodes synchronization status
+Nodes bool `json:"nodes,omitempty"`
 
-	// Nodes synchronization status
-	Nodes bool `json:"nodes,omitempty"`
+  
+    // MCS-API service exports synchronization status (null means that the component is not watching service exports)
+ServiceExports *bool `json:"service-exports,omitempty"`
 
-	// MCS-API service exports synchronization status (null means that the component is not watching service exports)
-	ServiceExports *bool `json:"service-exports,omitempty"`
+  
+    // Services synchronization status
+Services bool `json:"services,omitempty"`
 
-	// Services synchronization status
-	Services bool `json:"services,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this remote cluster synced
 func (m *RemoteClusterSynced) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this remote cluster synced based on context it is used
+// ContextValidate validates this remote cluster synced based on context it is used 
 func (m *RemoteClusterSynced) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *RemoteClusterSynced) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RemoteClusterSynced) UnmarshalBinary(b []byte) error {
-	var res RemoteClusterSynced
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res RemoteClusterSynced
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

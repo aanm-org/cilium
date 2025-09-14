@@ -9,54 +9,65 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StateDBQuery StateDB query
 //
 // swagger:model StateDBQuery
-type StateDBQuery struct {
+      type StateDBQuery struct {
+  
+  
+    // Index to query against
+Index string `json:"index,omitempty"`
 
-	// Index to query against
-	Index string `json:"index,omitempty"`
+  
+    // Key to query with. Base64 encoded.
+Key string `json:"key,omitempty"`
 
-	// Key to query with. Base64 encoded.
-	Key string `json:"key,omitempty"`
+  
+    // LowerBound prefix search or full-matching Get
+Lowerbound bool `json:"lowerbound,omitempty"`
 
-	// LowerBound prefix search or full-matching Get
-	Lowerbound bool `json:"lowerbound,omitempty"`
+  
+    // Name of the table to query
+Table string `json:"table,omitempty"`
 
-	// Name of the table to query
-	Table string `json:"table,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this state d b query
 func (m *StateDBQuery) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this state d b query based on context it is used
+// ContextValidate validates this state d b query based on context it is used 
 func (m *StateDBQuery) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *StateDBQuery) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *StateDBQuery) UnmarshalBinary(b []byte) error {
-	var res StateDBQuery
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res StateDBQuery
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

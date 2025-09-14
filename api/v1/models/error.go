@@ -9,22 +9,27 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Error error
 //
 // swagger:model Error
-type Error string
-
+    type Error string
+  
 // Validate validates this error
 func (m Error) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
+}
+// ContextValidate validates this error based on context it is used 
+func (m Error) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+  return nil
 }
 
-// ContextValidate validates this error based on context it is used
-func (m Error) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
+
+

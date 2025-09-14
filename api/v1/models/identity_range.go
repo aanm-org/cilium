@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IdentityRange Status of identity range of the cluster
 //
 // swagger:model IdentityRange
-type IdentityRange struct {
+      type IdentityRange struct {
+  
+  
+    // Maximum identity of the cluster
+MaxIdentity int64 `json:"max-identity,omitempty"`
 
-	// Maximum identity of the cluster
-	MaxIdentity int64 `json:"max-identity,omitempty"`
+  
+    // Minimum identity of the cluster
+MinIdentity int64 `json:"min-identity,omitempty"`
 
-	// Minimum identity of the cluster
-	MinIdentity int64 `json:"min-identity,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this identity range
 func (m *IdentityRange) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this identity range based on context it is used
+// ContextValidate validates this identity range based on context it is used 
 func (m *IdentityRange) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *IdentityRange) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IdentityRange) UnmarshalBinary(b []byte) error {
-	var res IdentityRange
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IdentityRange
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

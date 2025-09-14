@@ -9,48 +9,57 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BgpFamily Address Family Indicator (AFI) and Subsequent Address Family Indicator (SAFI) of the path
 //
 // swagger:model BgpFamily
-type BgpFamily struct {
+      type BgpFamily struct {
+  
+  
+    // Address Family Indicator (AFI) of the path
+Afi string `json:"afi,omitempty"`
 
-	// Address Family Indicator (AFI) of the path
-	Afi string `json:"afi,omitempty"`
+  
+    // Subsequent Address Family Indicator (SAFI) of the path
+Safi string `json:"safi,omitempty"`
 
-	// Subsequent Address Family Indicator (SAFI) of the path
-	Safi string `json:"safi,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this bgp family
 func (m *BgpFamily) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this bgp family based on context it is used
+// ContextValidate validates this bgp family based on context it is used 
 func (m *BgpFamily) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *BgpFamily) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *BgpFamily) UnmarshalBinary(b []byte) error {
-	var res BgpFamily
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res BgpFamily
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

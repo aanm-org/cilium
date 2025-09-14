@@ -9,94 +9,126 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // EndpointState State of endpoint
 //
 // swagger:model EndpointState
-type EndpointState string
+    type EndpointState string
+  
 
 func NewEndpointState(value EndpointState) *EndpointState {
-	return &value
+  return &value
 }
 
 // Pointer returns a pointer to a freshly-allocated EndpointState.
 func (m EndpointState) Pointer() *EndpointState {
-	return &m
+  return &m
 }
-
+    
+  
+    
+      
 const (
-
-	// EndpointStateWaitingDashForDashIdentity captures enum value "waiting-for-identity"
+      
+  // EndpointStateWaitingDashForDashIdentity captures enum value "waiting-for-identity"
 	EndpointStateWaitingDashForDashIdentity EndpointState = "waiting-for-identity"
-
-	// EndpointStateNotDashReady captures enum value "not-ready"
+      
+  // EndpointStateNotDashReady captures enum value "not-ready"
 	EndpointStateNotDashReady EndpointState = "not-ready"
-
-	// EndpointStateWaitingDashToDashRegenerate captures enum value "waiting-to-regenerate"
+      
+  // EndpointStateWaitingDashToDashRegenerate captures enum value "waiting-to-regenerate"
 	EndpointStateWaitingDashToDashRegenerate EndpointState = "waiting-to-regenerate"
-
-	// EndpointStateRegenerating captures enum value "regenerating"
+      
+  // EndpointStateRegenerating captures enum value "regenerating"
 	EndpointStateRegenerating EndpointState = "regenerating"
-
-	// EndpointStateRestoring captures enum value "restoring"
+      
+  // EndpointStateRestoring captures enum value "restoring"
 	EndpointStateRestoring EndpointState = "restoring"
-
-	// EndpointStateReady captures enum value "ready"
+      
+  // EndpointStateReady captures enum value "ready"
 	EndpointStateReady EndpointState = "ready"
-
-	// EndpointStateDisconnecting captures enum value "disconnecting"
+      
+  // EndpointStateDisconnecting captures enum value "disconnecting"
 	EndpointStateDisconnecting EndpointState = "disconnecting"
-
-	// EndpointStateDisconnected captures enum value "disconnected"
+      
+  // EndpointStateDisconnected captures enum value "disconnected"
 	EndpointStateDisconnected EndpointState = "disconnected"
-
-	// EndpointStateInvalid captures enum value "invalid"
+      
+  // EndpointStateInvalid captures enum value "invalid"
 	EndpointStateInvalid EndpointState = "invalid"
+      
 )
+    
 
 // for schema
 var endpointStateEnum []interface{}
-
 func init() {
-	var res []EndpointState
-	if err := json.Unmarshal([]byte(`["waiting-for-identity","not-ready","waiting-to-regenerate","regenerating","restoring","ready","disconnecting","disconnected","invalid"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		endpointStateEnum = append(endpointStateEnum, v)
-	}
+  var res []EndpointState
+  if err := json.Unmarshal([]byte(`["waiting-for-identity","not-ready","waiting-to-regenerate","regenerating","restoring","ready","disconnecting","disconnected","invalid"]`), &res); err != nil {
+    panic(err)
+  }
+  for _, v := range res {
+    endpointStateEnum = append(endpointStateEnum, v)
+  }
 }
 
 func (m EndpointState) validateEndpointStateEnum(path, location string, value EndpointState) error {
-	if err := validate.EnumCase(path, location, value, endpointStateEnum, true); err != nil {
-		return err
-	}
-	return nil
+  if err := validate.EnumCase(path, location, value, endpointStateEnum, true); err != nil {
+    return err
+  }
+  return nil
 }
-
+  
+  
+  
 // Validate validates this endpoint state
 func (m EndpointState) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  // value enum
+  if err := m.validateEndpointStateEnum("", "body", m); err != nil {
+    return err
+  }
+  
 
-	// value enum
-	if err := m.validateEndpointStateEnum("", "body", m); err != nil {
-		return err
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+  
+  
+
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
-// ContextValidate validates this endpoint state based on context it is used
+  
+  
+
+  
+
+// ContextValidate validates this endpoint state based on context it is used 
 func (m EndpointState) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
+
+
+

@@ -13,7 +13,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.29.17
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.32
 	github.com/aws/aws-sdk-go-v2/service/ec2 v1.227.0
-	github.com/aws/smithy-go v1.22.4
+	github.com/aws/smithy-go v1.23.0
 	github.com/blang/semver/v4 v4.0.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cilium/coverbee v0.3.3-0.20240723084546-664438750fce
@@ -21,7 +21,7 @@ require (
 	github.com/cilium/ebpf v0.19.0
 	github.com/cilium/endpointslice-controller v0.0.0-20250410163339-ffb33e27879c
 	github.com/cilium/fake v0.7.0
-	github.com/cilium/hive v0.0.0-20250611195437-5a5dacdfb354
+	github.com/cilium/hive 28e7a35ed227
 	github.com/cilium/lumberjack/v2 v2.4.1
 	github.com/cilium/proxy v0.0.0-20250623105955-2136f59a4ea1
 	github.com/cilium/statedb v0.4.4
@@ -29,7 +29,7 @@ require (
 	github.com/cilium/workerpool v1.3.0
 	github.com/cloudflare/cfssl v1.6.5
 	github.com/containernetworking/cni v1.3.0
-	github.com/coreos/go-systemd/v22 v22.5.0
+	github.com/coreos/go-systemd/v22 v22.6.0
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/docker/docker v28.3.2+incompatible
 	github.com/docker/libnetwork v0.8.0-dev.2.0.20210525090646-64b7a4574d14
@@ -48,13 +48,13 @@ require (
 	github.com/go-openapi/validate v0.24.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8
-	github.com/google/cel-go v0.25.0
+	github.com/google/cel-go v0.26.1
 	github.com/google/go-cmp v0.7.0
 	github.com/google/go-licenses v1.6.1-0.20230903011517-706b9c60edd4
 	github.com/google/gops v0.3.28
 	github.com/google/renameio/v2 v2.0.0
 	github.com/google/uuid v1.6.0
-	github.com/gopacket/gopacket v1.3.2-0.20250513021322-b23ac340366c
+	github.com/gopacket/gopacket v1.4.0
 	github.com/gorilla/mux v1.8.1
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.2
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
@@ -64,7 +64,7 @@ require (
 	github.com/hmarr/codeowners v1.2.1
 	github.com/jeremywohl/flatten v1.0.1
 	github.com/json-iterator/go v1.1.12
-	github.com/kevinburke/ssh_config v1.2.0
+	github.com/kevinburke/ssh_config v1.4.0
 	github.com/lthibault/jitterbug/v2 v2.2.2
 	github.com/mackerelio/go-osstat v0.2.6
 	github.com/mattn/go-shellwords v1.0.12
@@ -76,47 +76,47 @@ require (
 	github.com/osrg/gobgp/v3 v3.37.0
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
 	github.com/prometheus-community/pro-bing v0.7.0
-	github.com/prometheus/client_golang v1.22.0
+	github.com/prometheus/client_golang v1.23.2
 	github.com/prometheus/client_model v0.6.2
-	github.com/prometheus/common v0.65.0
+	github.com/prometheus/common v0.66.1
 	github.com/prometheus/procfs v0.17.0
 	github.com/russross/blackfriday/v2 v2.1.0
-	github.com/sasha-s/go-deadlock v0.3.5
+	github.com/sasha-s/go-deadlock v0.3.6
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/afero v1.14.0
-	github.com/spf13/cast v1.9.2
-	github.com/spf13/cobra v1.9.1
-	github.com/spf13/pflag v1.0.6
-	github.com/spf13/viper v1.20.1
-	github.com/spiffe/go-spiffe/v2 v2.5.0
+	github.com/spf13/afero v1.15.0
+	github.com/spf13/cast v1.10.0
+	github.com/spf13/cobra v1.10.1
+	github.com/spf13/pflag v1.0.10
+	github.com/spf13/viper v1.21.0
+	github.com/spiffe/go-spiffe/v2 v2.6.0
 	github.com/spiffe/spire-api-sdk v1.12.4
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 	github.com/vishvananda/netlink v1.3.1
 	github.com/vishvananda/netns v0.0.5
-	go.etcd.io/etcd/api/v3 v3.6.2
-	go.etcd.io/etcd/client/pkg/v3 v3.6.2
-	go.etcd.io/etcd/client/v3 v3.6.2
+	go.etcd.io/etcd/api/v3 v3.6.4
+	go.etcd.io/etcd/client/pkg/v3 v3.6.4
+	go.etcd.io/etcd/client/v3 v3.6.4
 	go.opentelemetry.io/otel v1.37.0
 	go.opentelemetry.io/otel/trace v1.37.0
 	go.uber.org/goleak v1.3.0
 	go.uber.org/zap v1.27.0
 	go.yaml.in/yaml/v3 v3.0.4
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba
-	golang.org/x/crypto v0.40.0
-	golang.org/x/mod v0.26.0
-	golang.org/x/net v0.42.0
-	golang.org/x/sync v0.16.0
-	golang.org/x/sys v0.34.0
-	golang.org/x/term v0.33.0
-	golang.org/x/text v0.27.0
-	golang.org/x/time v0.12.0
-	golang.org/x/tools v0.34.0
+	golang.org/x/crypto v0.42.0
+	golang.org/x/mod v0.28.0
+	golang.org/x/net v0.44.0
+	golang.org/x/sync v0.17.0
+	golang.org/x/sys v0.36.0
+	golang.org/x/term v0.35.0
+	golang.org/x/text v0.29.0
+	golang.org/x/time v0.13.0
+	golang.org/x/tools v0.37.0
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20241231184526-a9ab2273dd10
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250707201910-8d1bb00bc6a7
-	google.golang.org/grpc v1.73.0
-	google.golang.org/protobuf v1.36.6
+	google.golang.org/genproto/googleapis/rpc 97024824d090
+	google.golang.org/grpc v1.75.1
+	google.golang.org/protobuf v1.36.9
 	gopkg.in/ini.v1 v1.67.0
 	k8s.io/api v0.33.2
 	k8s.io/apiextensions-apiserver v0.33.2
@@ -127,11 +127,11 @@ require (
 	k8s.io/endpointslice v0.33.2
 	k8s.io/klog/v2 v2.130.1
 	k8s.io/kubectl v0.33.2
-	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
+	k8s.io/utils 0af2bda4dd1d
 	sigs.k8s.io/controller-runtime v0.20.4
 	sigs.k8s.io/gateway-api v1.3.1-0.20250611112659-17a60f668a0d
 	sigs.k8s.io/mcs-api v0.1.1-0.20250610011024-38bab5ba476b
-	sigs.k8s.io/mcs-api/controllers v0.0.0-20250619142051-a23ff80a0902
+	sigs.k8s.io/mcs-api/controllers b2223d716ee2
 	sigs.k8s.io/yaml v1.5.0
 )
 

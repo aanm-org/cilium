@@ -9,155 +9,234 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Recorder Collection of wildcard filters for pcap recorder
 //
 // swagger:model Recorder
-type Recorder struct {
+      type Recorder struct {
+  
+  
+    // spec
+Spec *RecorderSpec `json:"spec,omitempty"`
 
-	// spec
-	Spec *RecorderSpec `json:"spec,omitempty"`
+  
+    // status
+Status *RecorderStatus `json:"status,omitempty"`
 
-	// status
-	Status *RecorderStatus `json:"status,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this recorder
 func (m *Recorder) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateSpec(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+      if err := m.validateSpec(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+      if err := m.validateStatus(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  
+  
 
-	if err := m.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+      
+      
+      
+      
+
+      
 func (m *Recorder) validateSpec(formats strfmt.Registry) error {
-	if swag.IsZero(m.Spec) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Spec) { // not required
+    return nil
+  }
+        
+    
+      if m.Spec != nil {
+      if err := m.Spec.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("spec")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("spec")
+        }
+        return err
+      }
+    }
 
-	if m.Spec != nil {
-		if err := m.Spec.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("spec")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("spec")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+    
+      
+      
+      
+      
 
+      
 func (m *Recorder) validateStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.Status) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Status) { // not required
+    return nil
+  }
+        
+    
+      if m.Status != nil {
+      if err := m.Status.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("status")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("status")
+        }
+        return err
+      }
+    }
 
-	if m.Status != nil {
-		if err := m.Status.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this recorder based on the context it is used
 func (m *Recorder) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateSpec(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if err := m.contextValidateStatus(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+     
+      if err := m.contextValidateSpec(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+     
+      if err := m.contextValidateStatus(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
 func (m *Recorder) contextValidateSpec(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      if m.Spec != nil {
+      
+      if swag.IsZero(m.Spec) { // not required
+        return nil
+      }
+      
+      if err := m.Spec.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("spec")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("spec")
+        }
+        return err
+      }
+    }
 
-	if m.Spec != nil {
 
-		if swag.IsZero(m.Spec) { // not required
-			return nil
-		}
 
-		if err := m.Spec.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("spec")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("spec")
-			}
-			return err
-		}
-	}
-
-	return nil
+  return nil
 }
-
+    
+  
+    
 func (m *Recorder) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      if m.Status != nil {
+      
+      if swag.IsZero(m.Status) { // not required
+        return nil
+      }
+      
+      if err := m.Status.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("status")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("status")
+        }
+        return err
+      }
+    }
 
-	if m.Status != nil {
 
-		if swag.IsZero(m.Status) { // not required
-			return nil
-		}
 
-		if err := m.Status.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status")
-			}
-			return err
-		}
-	}
-
-	return nil
+  return nil
 }
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *Recorder) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Recorder) UnmarshalBinary(b []byte) error {
-	var res Recorder
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res Recorder
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

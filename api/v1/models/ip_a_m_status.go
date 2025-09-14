@@ -9,112 +9,196 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IPAMStatus Status of IP address management
-//
+// 
 // +k8s:deepcopy-gen=true
 //
 // swagger:model IPAMStatus
-type IPAMStatus struct {
+      type IPAMStatus struct {
+  
+  
+    // allocations
+Allocations AllocationMap `json:"allocations,omitempty"`
 
-	// allocations
-	Allocations AllocationMap `json:"allocations,omitempty"`
+  
+    // ipv4
+IPV4 []string `json:"ipv4"`
 
-	// ipv4
-	IPV4 []string `json:"ipv4"`
+  
+    // ipv6
+IPV6 []string `json:"ipv6"`
 
-	// ipv6
-	IPV6 []string `json:"ipv6"`
+  
+    // status
+Status string `json:"status,omitempty"`
 
-	// status
-	Status string `json:"status,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this IP a m status
 func (m *IPAMStatus) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateAllocations(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+      if err := m.validateAllocations(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+      
+      
+      
+      
+
+      
 func (m *IPAMStatus) validateAllocations(formats strfmt.Registry) error {
-	if swag.IsZero(m.Allocations) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Allocations) { // not required
+    return nil
+  }
+        
+    
+      if m.Allocations != nil {
+      if err := m.Allocations.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("allocations")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("allocations")
+        }
+        return err
+      }
+    }
 
-	if m.Allocations != nil {
-		if err := m.Allocations.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("allocations")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("allocations")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this IP a m status based on the context it is used
 func (m *IPAMStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateAllocations(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+     
+      if err := m.contextValidateAllocations(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+  
+    
+  
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
 func (m *IPAMStatus) contextValidateAllocations(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      
+      if swag.IsZero(m.Allocations) { // not required
+        return nil
+      }
+      
+      if err := m.Allocations.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("allocations")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("allocations")
+        }
+        return err
+      }
 
-	if swag.IsZero(m.Allocations) { // not required
-		return nil
-	}
 
-	if err := m.Allocations.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("allocations")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("allocations")
-		}
-		return err
-	}
 
-	return nil
+  return nil
 }
+    
+  
+    
+  
+    
+  
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *IPAMStatus) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IPAMStatus) UnmarshalBinary(b []byte) error {
-	var res IPAMStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IPAMStatus
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

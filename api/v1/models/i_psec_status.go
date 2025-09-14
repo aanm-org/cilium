@@ -9,59 +9,71 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IPsecStatus Status of the IPsec agent
-//
+// 
 // +k8s:deepcopy-gen=true
 //
 // swagger:model IPsecStatus
-type IPsecStatus struct {
+      type IPsecStatus struct {
+  
+  
+    // IPsec decryption interfaces
+DecryptInterfaces []string `json:"decrypt-interfaces"`
 
-	// IPsec decryption interfaces
-	DecryptInterfaces []string `json:"decrypt-interfaces"`
+  
+    // IPsec error count
+ErrorCount int64 `json:"error-count,omitempty"`
 
-	// IPsec error count
-	ErrorCount int64 `json:"error-count,omitempty"`
+  
+    // IPsec keys in use
+KeysInUse int64 `json:"keys-in-use,omitempty"`
 
-	// IPsec keys in use
-	KeysInUse int64 `json:"keys-in-use,omitempty"`
+  
+    // IPsec max sequence number
+MaxSeqNumber string `json:"max-seq-number,omitempty"`
 
-	// IPsec max sequence number
-	MaxSeqNumber string `json:"max-seq-number,omitempty"`
+  
+    // IPsec XFRM errors
+XfrmErrors map[string]int64 `json:"xfrm-errors,omitempty"`
 
-	// IPsec XFRM errors
-	XfrmErrors map[string]int64 `json:"xfrm-errors,omitempty"`
+  
+  
 }
-
+  
 // Validate validates this i psec status
 func (m *IPsecStatus) Validate(formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
-// ContextValidate validates this i psec status based on context it is used
+// ContextValidate validates this i psec status based on context it is used 
 func (m *IPsecStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *IPsecStatus) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IPsecStatus) UnmarshalBinary(b []byte) error {
-	var res IPsecStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res IPsecStatus
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

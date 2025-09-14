@@ -9,104 +9,160 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrefilterStatus CIDR ranges implemented in the Prefilter
 //
 // swagger:model PrefilterStatus
-type PrefilterStatus struct {
+      type PrefilterStatus struct {
+  
+  
+    // realized
+Realized *PrefilterSpec `json:"realized,omitempty"`
 
-	// realized
-	Realized *PrefilterSpec `json:"realized,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this prefilter status
 func (m *PrefilterStatus) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateRealized(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+      if err := m.validateRealized(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  
+  
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+      
+      
+      
+      
+
+      
 func (m *PrefilterStatus) validateRealized(formats strfmt.Registry) error {
-	if swag.IsZero(m.Realized) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Realized) { // not required
+    return nil
+  }
+        
+    
+      if m.Realized != nil {
+      if err := m.Realized.Validate(formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("realized")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("realized")
+        }
+        return err
+      }
+    }
 
-	if m.Realized != nil {
-		if err := m.Realized.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("realized")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("realized")
-			}
-			return err
-		}
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+  
 
+  
+
+    
 // ContextValidate validate this prefilter status based on the context it is used
 func (m *PrefilterStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
+  var res []error
+   
+  
 
-	if err := m.contextValidateRealized(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  
+     
+      if err := m.contextValidateRealized(ctx, formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+
+  
+    
 func (m *PrefilterStatus) contextValidateRealized(ctx context.Context, formats strfmt.Registry) error {
+       
+    
+  
+      if m.Realized != nil {
+      
+      if swag.IsZero(m.Realized) { // not required
+        return nil
+      }
+      
+      if err := m.Realized.ContextValidate(ctx, formats); err != nil {
+        if ve, ok := err.(*errors.Validation); ok {
+          return ve.ValidateName("realized")
+        } else if ce, ok := err.(*errors.CompositeError); ok {
+          return ce.ValidateName("realized")
+        }
+        return err
+      }
+    }
 
-	if m.Realized != nil {
 
-		if swag.IsZero(m.Realized) { // not required
-			return nil
-		}
 
-		if err := m.Realized.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("realized")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("realized")
-			}
-			return err
-		}
-	}
-
-	return nil
+  return nil
 }
+    
+   
+   
 
+  
 // MarshalBinary interface implementation
 func (m *PrefilterStatus) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PrefilterStatus) UnmarshalBinary(b []byte) error {
-	var res PrefilterStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res PrefilterStatus
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+

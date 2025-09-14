@@ -9,10 +9,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
-
-	"github.com/go-openapi/errors"
+  "github.com/go-openapi/strfmt"
+  	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
@@ -21,106 +20,177 @@ import (
 // RecorderFilter n-tuple filter to match traffic to be recorded
 //
 // swagger:model RecorderFilter
-type RecorderFilter struct {
+      type RecorderFilter struct {
+  
+  
+    // Layer 4 destination port, zero (or in future range)
+DstPort string `json:"dst-port,omitempty"`
 
-	// Layer 4 destination port, zero (or in future range)
-	DstPort string `json:"dst-port,omitempty"`
+  
+    // Layer 3 destination CIDR
+DstPrefix string `json:"dst-prefix,omitempty"`
 
-	// Layer 3 destination CIDR
-	DstPrefix string `json:"dst-prefix,omitempty"`
+  
+    // Layer 4 protocol
+// Enum: ["TCP","UDP","SCTP","ANY"]
+Protocol string `json:"protocol,omitempty"`
 
-	// Layer 4 protocol
-	// Enum: ["TCP","UDP","SCTP","ANY"]
-	Protocol string `json:"protocol,omitempty"`
+  
+    // Layer 4 source port, zero (or in future range)
+SrcPort string `json:"src-port,omitempty"`
 
-	// Layer 4 source port, zero (or in future range)
-	SrcPort string `json:"src-port,omitempty"`
+  
+    // Layer 3 source CIDR
+SrcPrefix string `json:"src-prefix,omitempty"`
 
-	// Layer 3 source CIDR
-	SrcPrefix string `json:"src-prefix,omitempty"`
+  
+  
 }
-
+  
+    
+  
+  
+  
 // Validate validates this recorder filter
 func (m *RecorderFilter) Validate(formats strfmt.Registry) error {
-	var res []error
+  var res []error
+  
+  
+  
 
-	if err := m.validateProtocol(formats); err != nil {
-		res = append(res, err)
-	}
+  
+    
+  
+    
+  
+    
+      if err := m.validateProtocol(formats); err != nil {
+        res = append(res, err)
+      }
+    
+  
+    
+  
+    
+  
+  
+  
 
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
+  if len(res) > 0 {
+    return errors.CompositeValidationError(res...)
+  }
+  return nil
 }
 
+  
+    
+  
+    
+  
+    
+      
 var recorderFilterTypeProtocolPropEnum []interface{}
 
 func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["TCP","UDP","SCTP","ANY"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		recorderFilterTypeProtocolPropEnum = append(recorderFilterTypeProtocolPropEnum, v)
-	}
+  var res []string
+  if err := json.Unmarshal([]byte(`["TCP","UDP","SCTP","ANY"]`), &res); err != nil {
+    panic(err)
+  }
+  for _, v := range res {
+    recorderFilterTypeProtocolPropEnum = append(recorderFilterTypeProtocolPropEnum, v)
+  }
 }
 
+        
+          
+          
 const (
-
-	// RecorderFilterProtocolTCP captures enum value "TCP"
+          
+  // RecorderFilterProtocolTCP captures enum value "TCP"
 	RecorderFilterProtocolTCP string = "TCP"
-
-	// RecorderFilterProtocolUDP captures enum value "UDP"
+          
+  // RecorderFilterProtocolUDP captures enum value "UDP"
 	RecorderFilterProtocolUDP string = "UDP"
-
-	// RecorderFilterProtocolSCTP captures enum value "SCTP"
+          
+  // RecorderFilterProtocolSCTP captures enum value "SCTP"
 	RecorderFilterProtocolSCTP string = "SCTP"
-
-	// RecorderFilterProtocolANY captures enum value "ANY"
+          
+  // RecorderFilterProtocolANY captures enum value "ANY"
 	RecorderFilterProtocolANY string = "ANY"
+          
 )
+        
 
 // prop value enum
 func (m *RecorderFilter) validateProtocolEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, recorderFilterTypeProtocolPropEnum, true); err != nil {
-		return err
-	}
-	return nil
+  if err := validate.EnumCase(path, location, value, recorderFilterTypeProtocolPropEnum, true); err != nil {
+    return err
+  }
+  return nil
 }
+      
+      
+      
+      
 
+      
 func (m *RecorderFilter) validateProtocol(formats strfmt.Registry) error {
-	if swag.IsZero(m.Protocol) { // not required
-		return nil
-	}
+  if swag.IsZero(m.Protocol) { // not required
+    return nil
+  }
+        
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  // value enum
+  if err := m.validateProtocolEnum("protocol", "body", m.Protocol); err != nil {
+    return err
+  }
+  
 
-	// value enum
-	if err := m.validateProtocolEnum("protocol", "body", m.Protocol); err != nil {
-		return err
-	}
 
-	return nil
+
+  return nil
 }
+      
+    
+  
+    
+  
+    
+  
+  
 
-// ContextValidate validates this recorder filter based on context it is used
+  
+
+// ContextValidate validates this recorder filter based on context it is used 
 func (m *RecorderFilter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
+  return nil
 }
-
+  
 // MarshalBinary interface implementation
 func (m *RecorderFilter) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
+  if m == nil {
+    return nil, nil
+  }
+  return swag.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RecorderFilter) UnmarshalBinary(b []byte) error {
-	var res RecorderFilter
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
+  var res RecorderFilter
+  if err := swag.ReadJSON(b, &res); err != nil {
+    return err
+  }
+  *m = res
+  return nil
 }
+
+
+
