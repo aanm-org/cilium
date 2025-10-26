@@ -271,7 +271,7 @@ jobs:
 
       - name: Setup bootid file
         if: ${{ steps.vars.outputs.downgrade_version != '' }}
-        uses: cilium/little-vm-helper@3b6f374a9b62e6987efee7e3ab226f968d857c7c # v0.0.25
+        uses: cilium/little-vm-helper@01debd6cb7e5514cfdb4a33e776bdc647bc5306e # v0.0.27
         with:
           provision: 'false'
           cmd: |
