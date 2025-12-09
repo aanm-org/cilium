@@ -5,6 +5,18 @@
     ":gitSignOff",
     "helpers:pinGitHubActionDigests"
   ],
+  // Ignore specific presets from config:base that create separate monorepo groups
+  // We want all Go dependencies grouped together in all-go-deps-main instead
+  "ignorePresets": [
+    "group:monorepos",
+    "group:recommended",
+    "monorepo:aws-sdk-go-v2",
+    "monorepo:azure-sdk-for-go",
+    "monorepo:opentelemetry-go",
+    "group:kubernetes",
+    "group:goOpenapi",
+    "group:githubArtifactActions"
+  ],
   // self-hosted configuration
   "username": "private-renovate-2[bot]",
   "repositories": ["aanm-org/cilium"],
@@ -101,6 +113,7 @@
         "docker.io/alpine/socat", // Alpine socat package
         "docker.io/library/busybox", // Official busybox image
         "eksctl-io/eksctl", // EKS CLI tool
+        "github/codeql-action", // GitHub CodeQL action
         "go", // golang version directive upgrade in go.mod
         "google/cloud-sdk", // google cloud-sdk official package name
         "google-github-actions/auth", // Google GitHub Actions auth
@@ -203,7 +216,7 @@
     },
     {
       // Avoid updating patch releases of golang in go.mod
-      "enabled": "false",
+      "enabled": false,
       "matchFiles": [
         "go.mod",
       ],
@@ -457,7 +470,8 @@
       ]
     },
     {
-      "groupName": "Go",
+      // Group golang version and docker image together for base image updates
+      "groupName": "base-images",
       "matchDepNames": [
         "go",
         "docker.io/library/golang"
@@ -466,16 +480,18 @@
     {
       // Group golangci-lint updates to overrule grouping of version updates in the GHA files.
       // Without this, golangci-lint updates are not in sync for GHA files and other usages.
-      "groupName": "golangci-lint",
+      "groupName": "all-dependencies",
       "matchDepNames": [
-        "golangci/golangci-lint"
+        "golangci/golangci-lint",
+        "golangci/golangci-lint-action"
       ]
     },
     {
       // Do not allow any updates into stable branches.
       "enabled": false,
       "matchDepNames": [
-        "golangci/golangci-lint"
+        "golangci/golangci-lint",
+        "golangci/golangci-lint-action"
       ],
       "matchBaseBranches": [
         "v1.18",
@@ -529,8 +545,7 @@
     },
     // group updating renovate versions together (config validator/self hosted renovate)
     {
-      "groupName": "renovate dependencies",
-      "groupSlug": "renovate-dependencies",
+      "groupName": "all-dependencies",
       "matchDepNames": [
         "renovatebot/renovate",
         "ghcr.io/renovatebot/renovate",
@@ -645,6 +660,9 @@
       }
     },
     {
+      // Grouped these together because they require a re-creation of the base
+      // image.
+      "groupName": "base-images",
       "matchFiles": [
         "images/builder/install-protoc.sh",
         "images/builder/install-protoplugins.sh"
