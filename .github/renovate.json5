@@ -188,7 +188,8 @@
       ],
       "groupName": "all-dependencies",
       "matchPackageNames": [
-        "!quay.io/goswagger/swagger"
+        "!quay.io/goswagger/swagger",
+        "!quay.io/cilium/cilium-envoy"
       ]
     },
     {
@@ -321,6 +322,9 @@
       "groupSlug": "all-external-images-deps-stable",
       "matchFileNames": [
         "install/kubernetes/Makefile.values"
+      ],
+      "matchPackageNames": [
+        "!quay.io/cilium/cilium-envoy"
       ],
       // This is required as otherwise patch version updates into stable branches
       // are also skipped if a minor version update is available at the same time.
