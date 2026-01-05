@@ -717,6 +717,7 @@
     },
     {
       "groupName": "cilium-envoy",
+      "additionalBranchPrefix": "cilium-envoy-",
       "matchDepNames": [
         "quay.io/cilium/cilium-envoy"
       ],
@@ -730,6 +731,7 @@
     },
     {
       "groupName": "cilium-envoy",
+      "additionalBranchPrefix": "cilium-envoy-",
       "matchDepNames": [
         "quay.io/cilium/cilium-envoy"
       ],
