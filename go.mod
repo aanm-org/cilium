@@ -40,7 +40,7 @@ require (
 	github.com/evanphx/json-patch v5.9.0+incompatible
 	github.com/fatih/color v1.18.0
 	github.com/fsnotify/fsnotify v1.8.0
-	github.com/go-logr/logr v1.4.2
+	github.com/go-logr/logr v1.4.3
 	github.com/go-openapi/errors v0.22.0
 	github.com/go-openapi/loads v0.22.0
 	github.com/go-openapi/runtime v0.28.0
@@ -51,7 +51,7 @@ require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8
 	github.com/google/cel-go v0.22.1
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 	github.com/google/go-licenses v1.6.1-0.20230903011517-706b9c60edd4
 	github.com/google/gops v0.3.28
 	github.com/google/renameio/v2 v2.0.0
@@ -92,7 +92,7 @@ require (
 	github.com/spf13/viper v1.19.0
 	github.com/spiffe/go-spiffe/v2 v2.5.0
 	github.com/spiffe/spire-api-sdk v1.11.1
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 	github.com/vishvananda/netlink v1.3.1-0.20250303224720-0e7078ed04c8
@@ -100,8 +100,8 @@ require (
 	go.etcd.io/etcd/api/v3 v3.5.17
 	go.etcd.io/etcd/client/pkg/v3 v3.5.17
 	go.etcd.io/etcd/client/v3 v3.5.17
-	go.opentelemetry.io/otel v1.34.0
-	go.opentelemetry.io/otel/trace v1.34.0
+	go.opentelemetry.io/otel v1.41.0
+	go.opentelemetry.io/otel/trace v1.41.0
 	go.uber.org/goleak v1.3.0
 	go.uber.org/zap v1.27.0
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba
@@ -249,10 +249,10 @@ require (
 	github.com/zeebo/errs v1.4.0 // indirect
 	go.mongodb.org/mongo-driver v1.14.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
+	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.53.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.22.0 // indirect
-	go.opentelemetry.io/otel/metric v1.34.0 // indirect
+	go.opentelemetry.io/otel/metric v1.41.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.5.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/dig v1.17.1 // indirect
