@@ -16,10 +16,7 @@ on:
 jobs:
   renovate:
     name: Run self-hosted Renovate
-    runs-on: ubuntu-26.04
-    environment:
-      name: renovate
-      deployment: false
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -28,10 +25,10 @@ jobs:
       # grained permissions installed in the repository for that.
       - name: Get token
         id: get_token
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        uses: cilium/actions-app-token@61a6271ce92ba02f49bf81c755685d59fb25a59a # v0.21.1
         with:
-          client-id: ${{ secrets.CILIUM_RENOVATE_CLIENT_ID }}
-          private-key: ${{ secrets.CILIUM_RENOVATE_PEM }}
+          APP_PEM: ${{ secrets.CILIUM_RENOVATE_PEM }}
+          APP_ID: ${{ secrets.CILIUM_RENOVATE_APP_ID }}
 
       # renovate clones the repository again in its container fs but it needs
       # the renovate configuration to start.
@@ -50,7 +47,7 @@ jobs:
           docker-user: root
           docker-cmd-file: .github/actions/renovate/entrypoint.sh
           configurationFile: .github/renovate.json5
-          token: '${{ steps.get_token.outputs.token }}'
+          token: '${{ steps.get_token.outputs.app_token }}'
           mount-docker-socket: true
           # builder.sh bind-mounts paths under it through the runner's daemon.
           docker-volumes: /var/tmp/renovate:/var/tmp/renovate
