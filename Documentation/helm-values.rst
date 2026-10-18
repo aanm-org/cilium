@@ -111,7 +111,7 @@
    * - :spelling:ignore:`authentication.mutual.spire.install.agent.image`
      - SPIRE agent image
      - object
-     - ``{"digest":"sha256:41b0dcd8b258a69db9e2768292a060766fb76fd866e4bc925849981ea1b825ff","override":null,"pullPolicy":"IfNotPresent","repository":"ghcr.io/spiffe/spire-agent","tag":"1.15.3","useDigest":true}``
+     - ``{"digest":"sha256:adc9e89e171af5764b29f9ffc9d3296b8033ba8c6ca11bcadbb56099170d526e","override":null,"pullPolicy":"IfNotPresent","repository":"ghcr.io/spiffe/spire-agent","tag":"1.15.4","useDigest":true}``
    * - :spelling:ignore:`authentication.mutual.spire.install.agent.labels`
      - SPIRE agent labels
      - object
@@ -199,7 +199,7 @@
    * - :spelling:ignore:`authentication.mutual.spire.install.server.image`
      - SPIRE server image
      - object
-     - ``{"digest":"sha256:4082f30d3e0ddc4000a171392c4ea174345ee44d161ee917c70b97b2ecfba141","override":null,"pullPolicy":"IfNotPresent","repository":"ghcr.io/spiffe/spire-server","tag":"1.15.3","useDigest":true}``
+     - ``{"digest":"sha256:a728418a76e5054e977680a7c70a291f93389294e4bef00e2aaad65324f39357","override":null,"pullPolicy":"IfNotPresent","repository":"ghcr.io/spiffe/spire-server","tag":"1.15.4","useDigest":true}``
    * - :spelling:ignore:`authentication.mutual.spire.install.server.initContainers`
      - SPIRE server init containers
      - list
@@ -503,7 +503,7 @@
    * - :spelling:ignore:`certgen`
      - Configure certificate generation for Hubble integration. If hubble.tls.auto.method=cronJob, these values are used for the Kubernetes CronJob which will be scheduled regularly to (re)generate any certificates not provided manually.
      - object
-     - ``{"affinity":{},"annotations":{"cronJob":{},"job":{}},"cronJob":{"failedJobsHistoryLimit":1,"successfulJobsHistoryLimit":3},"enforceCAValidityThroughoutLeavesDuration":true,"extraVolumeMounts":[],"extraVolumes":[],"generateCA":true,"image":{"digest":"sha256:14d29a176fc96d15b154559ce1a5baf01367c10baabfa7bb8028b72f087a56f0","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/certgen","tag":"v0.4.11","useDigest":true},"nodeSelector":{},"podLabels":{},"priorityClassName":"","resources":{},"tolerations":[],"ttlSecondsAfterFinished":null}``
+     - ``{"affinity":{},"annotations":{"cronJob":{},"job":{}},"cronJob":{"failedJobsHistoryLimit":1,"successfulJobsHistoryLimit":3},"enforceCAValidityThroughoutLeavesDuration":true,"extraVolumeMounts":[],"extraVolumes":[],"generateCA":true,"image":{"digest":"sha256:17aa2d435929ae36df735d2c5638df197f80460c08469b7ea32a1114fc8ccaaf","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/certgen","tag":"v0.4.12","useDigest":true},"nodeSelector":{},"podLabels":{},"priorityClassName":"","resources":{},"tolerations":[],"ttlSecondsAfterFinished":null}``
    * - :spelling:ignore:`certgen.affinity`
      - Affinity for certgen
      - object
@@ -1683,7 +1683,7 @@
    * - :spelling:ignore:`envoy.image`
      - Envoy container image.
      - object
-     - ``{"digest":"sha256:d6c8c0c91954d1885026d82a31b341f37dcd34a4b127fdaf1587e43ddd224cef","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.6-1791537840-00e749f11f69334c625e53fc1ce2fc6c7f34a51f","useDigest":true}``
+     - ``{"digest":"sha256:dab6a4a6ab66483b54010e2e31949586cfb204737ba0384bca396309552fa825","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.7-1791902781-d4ab8e96d4e0eb1fef84958ab2f25659b94f2d03","useDigest":true}``
    * - :spelling:ignore:`envoy.initContainers`
      - Init containers added to the cilium Envoy DaemonSet.
      - list
@@ -3671,7 +3671,7 @@
    * - :spelling:ignore:`preflight.envoy.image`
      - Envoy pre-flight image.
      - object
-     - ``{"digest":"sha256:d6c8c0c91954d1885026d82a31b341f37dcd34a4b127fdaf1587e43ddd224cef","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.6-1791537840-00e749f11f69334c625e53fc1ce2fc6c7f34a51f","useDigest":true}``
+     - ``{"digest":"sha256:dab6a4a6ab66483b54010e2e31949586cfb204737ba0384bca396309552fa825","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.7-1791902781-d4ab8e96d4e0eb1fef84958ab2f25659b94f2d03","useDigest":true}``
    * - :spelling:ignore:`preflight.extraEnv`
      - Additional preflight environment variables.
      - list
