@@ -32,6 +32,9 @@
   "requireConfig": "ignored",
   // This ensures that the gitAuthor and gitSignOff fields match
   "gitAuthor": "cilium-renovate[bot] <134692979+cilium-renovate[bot]@users.noreply.github.com>",
+  "gitIgnoredAuthors": [
+    "173347184+private-renovate-2[bot]@users.noreply.github.com"
+  ],
   "includePaths": [
     ".github/actions/bpftrace/**",
     ".github/actions/cosign/**",
