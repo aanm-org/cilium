@@ -970,7 +970,7 @@
         "quay.io/cilium/cilium-envoy"
       ],
       "versioning": "regex:v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<build>\\d+).*$",
-      "allowedVersions": "/^v1\\.39\\.([0-9]+)-([0-9]+)-.*$/",
+      "allowedVersions": "/^v1\\.40\\.([0-9]+)-([0-9]+)-.*$/",
       "matchBaseBranches": [
         "main",
       ]
