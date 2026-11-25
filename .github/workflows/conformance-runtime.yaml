@@ -63,7 +63,7 @@ concurrency:
 
 env:
   # renovate: datasource=golang-version depName=go
-  go-version: 1.26.9
+  go-version: 1.26.11
 
 jobs:
   echo-inputs:
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Set initial commit status
-        uses: cilium/actions/set-commit-status@687b48a0547e534dd7270d5069a5ab7967c0e907 # main
+        uses: cilium/actions/set-commit-status@079219db27301da70306eb5c0a038dc21c59781b # main
         with:
           sha: ${{ inputs.SHA || github.sha }}
 
@@ -133,10 +133,10 @@ jobs:
 
       - name: Install Go
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        uses: actions/setup-go@d8cbb8045d7f43706b9177cceb36c1f91a6644d5 # v7.1.0
         with:
           # renovate: datasource=golang-version depName=go
-          go-version: 1.26.9
+          go-version: 1.26.11
 
       - name: Build Ginkgo
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
@@ -236,7 +236,7 @@ jobs:
         # to continue on error since the check is reported at the end of the test.
         if: ${{ github.run_attempt != '1' }}
         continue-on-error: true
-        uses: cilium/actions/set-commit-status@687b48a0547e534dd7270d5069a5ab7967c0e907 # main
+        uses: cilium/actions/set-commit-status@079219db27301da70306eb5c0a038dc21c59781b # main
         with:
           sha: ${{ inputs.SHA || github.sha }}
 
@@ -301,10 +301,10 @@ jobs:
 
       - name: Install Go
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        uses: actions/setup-go@d8cbb8045d7f43706b9177cceb36c1f91a6644d5 # v7.1.0
         with:
           # renovate: datasource=golang-version depName=go
-          go-version: 1.26.9
+          go-version: 1.26.11
 
       - name: Build Ginkgo
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
@@ -462,7 +462,7 @@ jobs:
 
       - name: Upload artifacts
         if: ${{ !success() && (matrix.focus == 'agent' || matrix.focus == 'datapath') }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: cilium-sysdumps-${{ matrix.focus }}
           path: |
@@ -487,14 +487,14 @@ jobs:
         # dispatch with a vX-Y PR-number and keep failing hard, since they are what
         # corgi reads.
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && !startsWith(github.event.inputs.PR-number, 'v') }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: cilium-junits-${{ matrix.focus }}
           path: cilium-junits/*.xml
 
       - name: Upload features tested
         if: ${{ always() && (matrix.focus == 'agent' || matrix.focus == 'datapath') }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: features-tested-${{ matrix.focus }}
           path: features-tested-${{ env.job_name }}*.json
@@ -549,7 +549,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Set final commit status
-        uses: cilium/actions/set-commit-status@687b48a0547e534dd7270d5069a5ab7967c0e907 # main
+        uses: cilium/actions/set-commit-status@079219db27301da70306eb5c0a038dc21c59781b # main
         with:
           sha: ${{ inputs.SHA || github.sha }}
           status: ${{ needs.setup-and-test.result }}
