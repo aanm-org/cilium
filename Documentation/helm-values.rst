@@ -159,7 +159,7 @@
    * - :spelling:ignore:`authentication.mutual.spire.install.initImage`
      - init container image of SPIRE agent and server
      - object
-     - ``{"digest":"sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e","override":null,"pullPolicy":"IfNotPresent","repository":"docker.io/library/busybox","tag":"1.37.0","useDigest":true}``
+     - ``{"digest":"sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec","override":null,"pullPolicy":"IfNotPresent","repository":"docker.io/library/busybox","tag":"1.37.0","useDigest":true}``
    * - :spelling:ignore:`authentication.mutual.spire.install.namespace`
      - SPIRE namespace to install into
      - string
@@ -503,7 +503,7 @@
    * - :spelling:ignore:`certgen`
      - Configure certificate generation for Hubble integration. If hubble.tls.auto.method=cronJob, these values are used for the Kubernetes CronJob which will be scheduled regularly to (re)generate any certificates not provided manually.
      - object
-     - ``{"affinity":{},"annotations":{"cronJob":{},"job":{}},"cronJob":{"failedJobsHistoryLimit":1,"successfulJobsHistoryLimit":3},"extraVolumeMounts":[],"extraVolumes":[],"generateCA":true,"image":{"digest":"sha256:14d29a176fc96d15b154559ce1a5baf01367c10baabfa7bb8028b72f087a56f0","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/certgen","tag":"v0.4.11","useDigest":true},"nodeSelector":{},"podLabels":{},"priorityClassName":"","resources":{},"tolerations":[],"ttlSecondsAfterFinished":null}``
+     - ``{"affinity":{},"annotations":{"cronJob":{},"job":{}},"cronJob":{"failedJobsHistoryLimit":1,"successfulJobsHistoryLimit":3},"extraVolumeMounts":[],"extraVolumes":[],"generateCA":true,"image":{"digest":"sha256:2f89929b7474b739d5225d69f44bd70d9e28067ff6dc7fdbe0f6407828fb8395","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/certgen","tag":"v0.4.14","useDigest":true},"nodeSelector":{},"podLabels":{},"priorityClassName":"","resources":{},"tolerations":[],"ttlSecondsAfterFinished":null}``
    * - :spelling:ignore:`certgen.affinity`
      - Affinity for certgen
      - object
@@ -1683,7 +1683,7 @@
    * - :spelling:ignore:`envoy.image`
      - Envoy container image.
      - object
-     - ``{"digest":"sha256:d6c8c0c91954d1885026d82a31b341f37dcd34a4b127fdaf1587e43ddd224cef","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.6-1791537840-00e749f11f69334c625e53fc1ce2fc6c7f34a51f","useDigest":true}``
+     - ``{"digest":"sha256:1cb77d1c83ed2fac77063cab23e191464da74ea60d7bdc184e0155dfba762237","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.9-1795562132-6da592014cc597f6598455e73e66d38f8b7f8783","useDigest":true}``
    * - :spelling:ignore:`envoy.initContainers`
      - Init containers added to the cilium Envoy DaemonSet.
      - list
@@ -2559,7 +2559,7 @@
    * - :spelling:ignore:`hubble.ui.backend.image`
      - Hubble-ui backend image.
      - object
-     - ``{"digest":"sha256:83b3fc763f3d49948c306bf49b08277383e195904b9ca5c0c0022b2112628787","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/hubble-ui-backend","tag":"v0.13.6","useDigest":true}``
+     - ``{"digest":"sha256:e47a10fb74ee01ac6230895dafb2f180558fbfc4ff3cc0409e767ee995525b0f","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/hubble-ui-backend","tag":"v0.13.7","useDigest":true}``
    * - :spelling:ignore:`hubble.ui.backend.livenessProbe.enabled`
      - Enable liveness probe for Hubble-ui backend (requires Hubble-ui 0.12+)
      - bool
@@ -2599,7 +2599,7 @@
    * - :spelling:ignore:`hubble.ui.frontend.image`
      - Hubble-ui frontend image.
      - object
-     - ``{"digest":"sha256:049a80a03585c043d0c3121bdc518c72b0fd42bae07e4bcce0fdb8f1e88041d0","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/hubble-ui","tag":"v0.13.6","useDigest":true}``
+     - ``{"digest":"sha256:1773bca237e3fc3d922b50f6d0e40ef17f8eca3fe5cd1abc6620eef88a640346","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/hubble-ui","tag":"v0.13.7","useDigest":true}``
    * - :spelling:ignore:`hubble.ui.frontend.resources`
      - Resource requests and limits for the 'frontend' container of the 'hubble-ui' deployment.
      - object
@@ -3575,7 +3575,7 @@
    * - :spelling:ignore:`preflight.envoy.image`
      - Envoy pre-flight image.
      - object
-     - ``{"digest":"sha256:d6c8c0c91954d1885026d82a31b341f37dcd34a4b127fdaf1587e43ddd224cef","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.6-1791537840-00e749f11f69334c625e53fc1ce2fc6c7f34a51f","useDigest":true}``
+     - ``{"digest":"sha256:1cb77d1c83ed2fac77063cab23e191464da74ea60d7bdc184e0155dfba762237","override":null,"pullPolicy":"IfNotPresent","repository":"quay.io/cilium/cilium-envoy","tag":"v1.38.9-1795562132-6da592014cc597f6598455e73e66d38f8b7f8783","useDigest":true}``
    * - :spelling:ignore:`preflight.extraEnv`
      - Additional preflight environment variables.
      - list
